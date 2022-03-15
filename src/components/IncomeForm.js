@@ -1,8 +1,22 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { incomeActions } from "../store/root-redux";
+
+const FormStyle = styled.div`
+  .submit-btn {
+    border: 1px solid black;
+    min-height: 50px;
+    min-width: 100px;
+    background-color: pink;
+  }
+`;
 
 const IncomeForm = () => {
   const [incomeDescr, setIncomeDescr] = useState(" ");
   const [incomeAmount, setIncomeAmount] = useState(0);
+
+  const dispatch = useDispatch();
 
   const submitIncomeHandler = (event) => {
     event.preventDefault();
@@ -12,6 +26,10 @@ const IncomeForm = () => {
       incomeAmount: incomeAmount,
     };
     console.log(newIncome);
+
+    dispatch(incomeActions.addIncome(+incomeAmount));
+
+    setIncomeAmount(0);
   };
 
   const incomeHandler = (event) => {
@@ -23,7 +41,7 @@ const IncomeForm = () => {
   };
 
   return (
-    <Fragment>
+    <FormStyle>
       <h3>Income Entries</h3>
       <form onSubmit={submitIncomeHandler}>
         <fieldset>
@@ -46,9 +64,11 @@ const IncomeForm = () => {
             onChange={incomeAmountHandler}
           ></input>
         </fieldset>
-        <button type="submit">Add Income</button>
+        <button className="submit-btn" type="submit">
+          Add Income
+        </button>
       </form>
-    </Fragment>
+    </FormStyle>
   );
 };
 export default IncomeForm;

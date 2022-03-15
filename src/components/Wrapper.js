@@ -11,8 +11,8 @@ const Wrapper = () => {
       <Summary />
       <IncomeForm />
       <ExpenseForm />
-      <List />
-      <List />
+      <List header={"Income"} />
+      <List header={"Expense"} />
     </Fragment>
   );
 };

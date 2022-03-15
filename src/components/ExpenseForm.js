@@ -1,4 +1,14 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
+import styled from "styled-components";
+
+const FormStyle = styled.div`
+  .submit-btn {
+    border: 1px solid black;
+    min-height: 50px;
+    min-width: 100px;
+    background-color: pink;
+  }
+`;
 
 const ExpenseForm = () => {
   const [expDescr, setExpDescr] = useState("");
@@ -23,7 +33,7 @@ const ExpenseForm = () => {
   };
 
   return (
-    <Fragment>
+    <FormStyle>
       <h3>Expense Entries</h3>
       <form onSubmit={submitExpHandler}>
         <fieldset>
@@ -46,9 +56,11 @@ const ExpenseForm = () => {
             onChange={expAmountHandler}
           ></input>
         </fieldset>
-        <button type="submit">Add Expense</button>
+        <button className="submit-btn" type="submit">
+          Add Expense
+        </button>
       </form>
-    </Fragment>
+    </FormStyle>
   );
 };
 export default ExpenseForm;

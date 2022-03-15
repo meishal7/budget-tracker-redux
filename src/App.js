@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Wrapper from "./components/Wrapper";
+import "./style/normalize.css";
 
 function App() {
   return (
