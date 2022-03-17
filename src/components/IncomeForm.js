@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { incomeActions } from "../store/root-redux";
 
 const FormStyle = styled.div`
-  border: solid 1px black;
+  background-color: var(--section-color);
+  /* border: var(--border-card); */
+  border: none;
+  box-shadow: var(--shadow);
   flex: 1 1 100px;
   padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
   /* margin-left: var(--div-left-right-margin);
@@ -24,15 +27,18 @@ const FormStyle = styled.div`
     height: var(--btn-height);
     margin: 0 auto;
     display: block;
-    border: 1px solid black;
+    border: none;
     border-radius: 5px;
+    color: var(--text-color-dark);
     margin-top: var(--btn-margin);
     margin-bottom: var(--btn-margin);
     padding-top: var(--btn-padding);
     padding-bottom: var(--btn-padding);
+    background-color: var(--btn-color);
   }
   input {
     height: 40px;
+    border: 0.5px solid var(--text-color-dark);
     border-radius: 5px;
   }
   input:focus {

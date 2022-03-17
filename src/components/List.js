@@ -2,9 +2,11 @@ import styled from "styled-components";
 import Item from "./Item";
 
 const ListStyle = styled.div`
-  border: 1px solid black;
+  background-color: var(--section-color);
+  border: none;
   margin: 20px 40px;
   border-radius: var(--radius);
+  min-height: 50px;
   .list-header {
     text-align: center;
     padding-top: 10px;

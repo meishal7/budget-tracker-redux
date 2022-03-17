@@ -2,7 +2,10 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const SummaryStyle = styled.div`
-  border: 1px black solid;
+  background-color: var(--section-color);
+  /* border: var(--border-card); */
+  border: none;
+  box-shadow: var(--shadow);
   margin: var(--div-top-bottom-margin) auto;
   border-radius: var(--radius);
   width: 60%;

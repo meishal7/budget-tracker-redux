@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { expenseActions } from "../store/root-redux";
 
 const FormStyle = styled.div`
-  border: solid 1px black;
+  background-color: var(--section-color);
+  border: var(--border-card);
+  box-shadow: var(--shadow);
   flex: 1 1 100px;
   padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
   /* margin-left: var(--div-left-right-margin);
@@ -24,16 +26,19 @@ const FormStyle = styled.div`
     height: var(--btn-height);
     margin: 0 auto;
     display: block;
-    border: 1px solid black;
+    border: none;
     border-radius: 5px;
     margin-top: var(--btn-margin);
     margin-bottom: var(--btn-margin);
     padding-top: var(--btn-padding);
     padding-bottom: var(--btn-padding);
+    background-color: var(--btn-color);
+    color: var(--text-color);
   }
   input {
     height: 40px;
     border-radius: 5px;
+    border: none;
   }
   input:focus {
     border: solid 1px black;

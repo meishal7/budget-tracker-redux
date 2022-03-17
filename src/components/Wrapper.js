@@ -9,7 +9,8 @@ import { createGlobalStyle } from "styled-components";
 const WrapperStyle = styled.div`
   width: 60%;
   margin: 0 auto;
-  border: 1px black solid;
+  border: none;
+  background-color: var(--bg-color);
 
   .forms {
     display: flex;
@@ -21,6 +22,7 @@ const WrapperStyle = styled.div`
   .header {
     text-align: center;
     padding: 10px 10px;
+    color: var(--text-color-dark);
   }
 `;
 
