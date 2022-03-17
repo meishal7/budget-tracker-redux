@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const SummaryStyle = styled.div`
   background-color: var(--section-color);
-  /* border: var(--border-card); */
   border: none;
   box-shadow: var(--shadow);
   margin: var(--div-top-bottom-margin) auto;
@@ -47,7 +46,6 @@ const Summary = () => {
   return (
     <SummaryStyle>
       <h3 className="summary-header">Summary</h3>
-
       <p className="income">Total income: ${totalIncome}</p>
       <p className="expense">Total expense: ${totalExpense}</p>
       <p className="left">Left after spending: ${left}</p>
