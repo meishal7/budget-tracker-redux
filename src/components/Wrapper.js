@@ -4,24 +4,23 @@ import List from "./List";
 import Summary from "./Summary";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { Fragment } from "react";
+import { createGlobalStyle } from "styled-components";
 
 const WrapperStyle = styled.div`
-  width: 60vw;
-  margin: 1em auto;
-  background-color: #f9ce4e;
-  border-radius: 10px;
+  width: 60%;
+  margin: 0 auto;
+  border: 1px black solid;
 
-  h1 {
-    text-align: center;
-    padding-top: 1em;
-    font-weight: 800;
-    color: #9552f2;
-  }
   .forms {
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     flex-wrap: wrap;
-    padding: 1em 1em;
+    margin: var(--div-top-bottom-margin) var(--div-left-right-margin);
+  }
+  .header {
+    text-align: center;
+    padding: 10px 10px;
   }
 `;
 
@@ -31,10 +30,10 @@ const Wrapper = () => {
 
   return (
     <WrapperStyle>
-      <h1>Budget Tracker</h1>
+      <h1 className="header">Budget Tracker</h1>
 
       <Summary />
-      <div>
+      <div className="forms">
         <IncomeForm />
         <ExpenseForm />
       </div>

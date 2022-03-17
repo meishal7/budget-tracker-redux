@@ -1,23 +1,42 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { incomeActions } from "../store/root-redux";
 
 const FormStyle = styled.div`
-  .submit-btn {
-    border: 1px solid black;
-    min-height: 50px;
-    min-width: 100px;
-    background-color: pink;
-  }
-  border-radius: 10px;
-  background-color: white;
-  color: #53451d;
-  h3 {
-    text-align: center;
-  }
+  border: solid 1px black;
+  flex: 1 1 100px;
+  padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
+  /* margin-left: var(--div-left-right-margin);
+  margin-right: var(--div-left-right-margin); */
+  border-radius: var(--radius);
+  margin: var(--div-top-bottom-margin) var(--div-left-right-margin);
   fieldset {
-    border: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .income-header {
+    text-align: center;
+    padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
+  }
+  .submit-btn {
+    width: var(--btn-width);
+    height: var(--btn-height);
+    margin: 0 auto;
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: var(--btn-margin);
+    margin-bottom: var(--btn-margin);
+    padding-top: var(--btn-padding);
+    padding-bottom: var(--btn-padding);
+  }
+  input {
+    height: 40px;
+    border-radius: 5px;
+  }
+  input:focus {
+    border: solid 1px black;
   }
 `;
 
@@ -38,6 +57,7 @@ const IncomeForm = () => {
     );
 
     setIncomeAmount(0);
+    setIncomeDescr("");
   };
 
   const incomeHandler = (event) => {
@@ -50,7 +70,7 @@ const IncomeForm = () => {
 
   return (
     <FormStyle>
-      <h3>Income Entries</h3>
+      <h3 className="income-header">Income Entries</h3>
       <form onSubmit={submitIncomeHandler}>
         <fieldset>
           <label htmlFor="income-description">Income Description</label>

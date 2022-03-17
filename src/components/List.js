@@ -2,28 +2,19 @@ import styled from "styled-components";
 import Item from "./Item";
 
 const ListStyle = styled.div`
-  border: solid 2px black;
-  margin-top: 2em;
-  h3 {
+  border: 1px solid black;
+  margin: 20px 40px;
+  border-radius: var(--radius);
+  .list-header {
     text-align: center;
-    background-color: #50f250;
-  }
-
-  .items {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    padding-top: 10px;
   }
 `;
 
 const List = ({ header, data }) => {
   return (
     <ListStyle>
-      <h3>{header}</h3>
-      <div className="items">
-        <h4>Description</h4>
-        <h4>Amount</h4>
-      </div>
+      <h3 className="list-header">{header}</h3>
 
       <div>
         {data.map((item) => (

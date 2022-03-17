@@ -1,12 +1,23 @@
 import { Fragment } from "react";
+import styled from "styled-components";
+
+const ItemStyle = styled.div`
+  border: solid 1px black;
+  border-radius: var(--radius);
+  margin: var(--div-top-bottom-margin) var(--div-left-right-margin);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+`;
 
 const Item = ({ description, cost }) => {
   return (
-    <Fragment>
+    <ItemStyle>
       <p>{description}</p>
-      <p>{cost}</p>
+      <p>${cost}</p>
       <button type="button">Delete</button>
-    </Fragment>
+    </ItemStyle>
   );
 };
 export default Item;
