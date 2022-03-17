@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import styled from "styled-components";
 
 const ItemStyle = styled.div`
-  border: solid 1px black;
+  border: solid 0.5px var(--text-color-dark);
   border-radius: var(--radius);
   margin: var(--div-top-bottom-margin) var(--div-left-right-margin);
   display: flex;

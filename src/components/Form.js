@@ -1,24 +1,20 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { incomeActions } from "../store/root-redux";
 
 const FormStyle = styled.div`
   background-color: var(--section-color);
-  /* border: var(--border-card); */
   border: none;
   box-shadow: var(--shadow);
   flex: 1 1 100px;
   padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
-  /* margin-left: var(--div-left-right-margin);
-  margin-right: var(--div-left-right-margin); */
   border-radius: var(--radius);
   margin: var(--div-top-bottom-margin) var(--div-left-right-margin);
   fieldset {
     display: flex;
     flex-direction: column;
   }
-  .income-header {
+  .header {
     text-align: center;
     padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
   }
@@ -46,63 +42,63 @@ const FormStyle = styled.div`
   }
 `;
 
-const IncomeForm = () => {
-  const [incomeDescr, setIncomeDescr] = useState(" ");
-  const [incomeAmount, setIncomeAmount] = useState(0);
+const Form = ({ header, action }) => {
+  const [descr, setDescr] = useState(" ");
+  const [amount, setAmount] = useState(0);
 
   const dispatch = useDispatch();
 
-  const submitIncomeHandler = (event) => {
+  const submitHandler = (event, action) => {
     event.preventDefault();
 
     dispatch(
-      incomeActions.addIncome({
-        amount: +incomeAmount,
-        description: incomeDescr,
+      action({
+        amount: +amount,
+        description: descr,
       })
     );
 
-    setIncomeAmount(0);
-    setIncomeDescr("");
+    setAmount(0);
+    setDescr("");
   };
 
-  const incomeHandler = (event) => {
-    setIncomeDescr(event.target.value);
+  const descrHandler = (event) => {
+    setDescr(event.target.value);
   };
 
-  const incomeAmountHandler = (event) => {
-    setIncomeAmount(event.target.value);
+  const amountHandler = (event) => {
+    setAmount(event.target.value);
   };
 
   return (
     <FormStyle>
-      <h3 className="income-header">Income Entries</h3>
-      <form onSubmit={submitIncomeHandler}>
+      <h3 className="header">{header} Entries</h3>
+      <form onSubmit={(e) => submitHandler(e, action)}>
         <fieldset>
-          <label htmlFor="income-description">Income Description</label>
+          <label htmlFor="description">{header} Description</label>
           <input
             type="text"
-            id="income-description"
-            name="income-description"
-            value={incomeDescr}
-            onChange={incomeHandler}
+            id="description"
+            name="description"
+            value={descr}
+            onChange={descrHandler}
           ></input>
         </fieldset>
         <fieldset>
-          <label htmlFor="income-amount">Income Amount</label>
+          <label htmlFor="amount">{header} Amount</label>
           <input
             type="number"
-            id="income-amount"
-            name="income-amount"
-            value={incomeAmount}
-            onChange={incomeAmountHandler}
+            id="amount"
+            name="amount"
+            value={amount}
+            onChange={amountHandler}
           ></input>
         </fieldset>
         <button className="submit-btn" type="submit">
-          Add Income
+          Add {header}
         </button>
       </form>
     </FormStyle>
   );
 };
-export default IncomeForm;
+export default Form;

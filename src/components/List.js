@@ -6,7 +6,9 @@ const ListStyle = styled.div`
   border: none;
   margin: 20px 40px;
   border-radius: var(--radius);
-  min-height: 50px;
+  min-height: 100px;
+  box-shadow: var(--shadow);
+  padding: var(--div-top-bottom-padding) var(--div-left-right-padding);
   .list-header {
     text-align: center;
     padding-top: 10px;

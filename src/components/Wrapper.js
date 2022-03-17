@@ -1,16 +1,18 @@
-import ExpenseForm from "./ExpenseForm";
-import IncomeForm from "./IncomeForm";
 import List from "./List";
 import Summary from "./Summary";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import Form from "./Form";
+import { incomeActions } from "../store/root-redux";
+import { expenseActions } from "../store/root-redux";
 
 const WrapperStyle = styled.div`
   width: 60%;
   margin: 0 auto;
   border: none;
   background-color: var(--bg-color);
+  padding-top: var(--div-top-bottom-padding);
+  padding-bottom: var(--div-top-bottom-padding);
 
   .forms {
     display: flex;
@@ -36,11 +38,19 @@ const Wrapper = () => {
 
       <Summary />
       <div className="forms">
-        <IncomeForm />
-        <ExpenseForm />
+        <Form header={"Income"} action={incomeActions.addIncome} />
+        <Form header={"Expense"} action={expenseActions.addExpense} />
       </div>
-      <List data={incomeItems} header={"Income"} />
-      <List data={expenseItems} header={"Expense"} />
+      <List
+        data={incomeItems}
+        header={"Income"}
+        action={incomeActions.addIncome}
+      />
+      <List
+        data={expenseItems}
+        header={"Expense"}
+        action={expenseActions.addExpense}
+      />
     </WrapperStyle>
   );
 };
