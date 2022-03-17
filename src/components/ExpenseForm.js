@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { expenseActions } from "../store/root-redux";
 
 const FormStyle = styled.div`
   .submit-btn {
@@ -14,14 +16,17 @@ const ExpenseForm = () => {
   const [expDescr, setExpDescr] = useState("");
   const [expAmount, setExpAmount] = useState(0.0);
 
+  const dispatch = useDispatch();
+
   const submitExpHandler = (event) => {
     event.preventDefault();
 
-    let newExp = {
-      expDescr: expDescr,
-      expAmount: expAmount,
-    };
-    console.log(newExp);
+    dispatch(
+      expenseActions.addExpense({
+        amount: +expAmount,
+        description: expDescr,
+      })
+    );
   };
 
   const expHandler = (event) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { incomeActions } from "../store/root-redux";
@@ -9,6 +9,15 @@ const FormStyle = styled.div`
     min-height: 50px;
     min-width: 100px;
     background-color: pink;
+  }
+  border-radius: 10px;
+  background-color: white;
+  color: #53451d;
+  h3 {
+    text-align: center;
+  }
+  fieldset {
+    border: none;
   }
 `;
 
@@ -21,13 +30,12 @@ const IncomeForm = () => {
   const submitIncomeHandler = (event) => {
     event.preventDefault();
 
-    let newIncome = {
-      incomeDescr: incomeDescr,
-      incomeAmount: incomeAmount,
-    };
-    console.log(newIncome);
-
-    dispatch(incomeActions.addIncome(+incomeAmount));
+    dispatch(
+      incomeActions.addIncome({
+        amount: +incomeAmount,
+        description: incomeDescr,
+      })
+    );
 
     setIncomeAmount(0);
   };

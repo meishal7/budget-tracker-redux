@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Item from "./Item";
 
 const ListStyle = styled.div`
   border: solid 2px black;
@@ -15,7 +16,7 @@ const ListStyle = styled.div`
   }
 `;
 
-const List = ({ header }) => {
+const List = ({ header, data }) => {
   return (
     <ListStyle>
       <h3>{header}</h3>
@@ -24,7 +25,15 @@ const List = ({ header }) => {
         <h4>Amount</h4>
       </div>
 
-      <div></div>
+      <div>
+        {data.map((item) => (
+          <Item
+            description={item.description}
+            cost={item.amount}
+            key={item.description}
+          />
+        ))}
+      </div>
     </ListStyle>
   );
 };
