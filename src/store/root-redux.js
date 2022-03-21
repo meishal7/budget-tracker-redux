@@ -9,32 +9,34 @@ const initialState = {
 
 const incomeSlice = createSlice({
   name: "income",
-  initialState: initialState,
+  initialState: { totalIncome: 0, incomeItems: [] },
   reducers: {
     addIncome: (state, action) => {
       state.totalIncome += action.payload.amount;
-      const data = {
-        description: action.payload.description,
-        amount: action.payload.amount,
-      };
-
-      state.incomeItems.push(data);
+      state.incomeItems.push(action.payload);
+    },
+    delete: (state, action) => {
+      state.totalIncome -= action.payload.amount;
+      state.incomeItems = state.incomeItems.filter(
+        (item) => item.description !== action.payload.description
+      );
     },
   },
 });
 
 const expenseSlice = createSlice({
   name: "expense",
-  initialState: initialState,
+  initialState: { totalExpense: 0, expenseItems: [] },
   reducers: {
     addExpense: (state, action) => {
       state.totalExpense += action.payload.amount;
-      const data = {
-        description: action.payload.description,
-        amount: action.payload.amount,
-      };
-
-      state.expenseItems.push(data);
+      state.expenseItems.push(action.payload);
+    },
+    delete: (state, action) => {
+      state.totalExpense -= action.payload.amount;
+      state.expenseItems = state.expenseItems.filter(
+        (item) => item.description !== action.payload.description
+      );
     },
   },
 });
@@ -49,4 +51,5 @@ const store = configureStore({
 
 export const incomeActions = incomeSlice.actions;
 export const expenseActions = expenseSlice.actions;
+
 export default store;

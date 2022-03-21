@@ -40,6 +40,8 @@ const SummaryStyle = styled.div`
 const Summary = () => {
   const { totalIncome } = useSelector((state) => state.income);
   const { totalExpense } = useSelector((state) => state.expense);
+  const state = useSelector((state) => state);
+  console.log(state);
 
   let left = totalIncome - totalExpense;
 

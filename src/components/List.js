@@ -26,6 +26,7 @@ const List = ({ header, data }) => {
             description={item.description}
             cost={item.amount}
             key={item.description}
+            category={header}
           />
         ))}
       </div>
